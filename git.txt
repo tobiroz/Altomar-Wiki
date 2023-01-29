@@ -1,0 +1,90 @@
+---------------------------------------------------------------------------------------
+configuracion de git:
+
+git config --global (para que la configuracion que agreguemos se efectue de manera global y no por proyecto)
+
+git config --global user.name "TobiRoz" (configurar git con nuestro nombre)
+git config --global user.email tobiroz2005@gmail.com (configurar git con nuestro email)
+
+git config --global core.editor "code --wait" (para que visual studio code sea el editor de texto predeterminado) (--wait para que la terminal se quede esperando hasta que nosotros cerremos el editor de texto)
+git config --global -e (pra ver nuestro archivo de configuracion global en el editor de texto)
+git config --global core.autocrlf true (para dispositivos windows "true" y para dispositivos mac o linux "input", todo esto para que git sepa como tratar los saltos de linea ya sea en win o linux y/o mac)
+git config -h (para ver otras configuraciones de git)
+-----------------------------------------------
+Git init (inicializar un repositorio en git)
+
+git status // git status -s (muestra el estado acutal de nuestro repositorio)
+git add (para pasar al stage un archivo), (ese archivo puede ser "el nombre del archivo.(extension de archivo) {esto para que se agregue solo ese archivo}", ".(extension de archivo) {para que se agreguen todos los archivos de esa extension}", "." {para agregar todos los archivos del directorio en el que se encuentra}) 
+git commit (abre el editor de texto que se configuro anteriormente, mostrando cual es el archivo que ha sido modificado)(agregar un mensaje en la parte superior de el editor de texto que va a indicar cual va a ser el mensaje que nosotros querramos agregar en este commit)
+git push (publicar los cambios a el repositorio)
+
+rm "nombre del archivo que quieras eliminar"
+git commit -m "mensaje que tenga sentido para que otros entiendan al ver el historial de los cambios"
+git restore "mombre del archivo" (para restaurar un archivo eliminado)
+git mv "nomre del archivo" "nombre que queres que se llame el archivo" (se renombra y se manda directamente a Stage)
+git diff (cambios que hicimos pero todavia no está en la etapa de "Stage")
+git diff --staged (todos los cambios que se encuentren en la etapa de "Stage")
+
+--------------------------------------------------------------------------------------------------------------------
+logs:
+
+abrir vs code, crear un archivo ".env" donde escribirias {Password:*******} y abajo {User: Name}; crer otro archivo ".gitignore" donde vas a indicar (escribiendo .env) o (una ruta en especifica) el archivo que quieras ignorar para que no vayan al repositorio.
+
+git log --oneline (muestra el historial del commit)
+
+cat "nombre del archivo" (te muestra el contenido del archivo)
+
+-------------------------------------------------------------------------------------------------------------------------
+
+rama MAIN o MASTER
+
+git branch (te muestra en que rama estás ubicado/a)
+git checkout -b "nombre de la rama" (para crear una nueva rama)
+git checkout main // git checkout master (te devuelve a la rama MAIN o MASTER)
+git merge "nombre de la rama" (estando en el main/master, escribiendo ese comando, une esa rama al main/master)
+
+
+------------------------------------------------------------------------------------------------------------------------------
+GitHub
+
+- creas un nuevo repositorio apretando el boton verde "NEW"
+- le pones un nombre, y sin agregarle nada más, precionamos Create repository
+- luego copias el anteultimo codigo (git remote add origin https://github.com/User/****.git)
+- y lo pegas en la terminal
+- copias el ultimo codigo (git push -u origin main)
+- y lo pegas en la terminal
+
+luego te pedira un nombre de usuario, agregas el de github
+luego te pedira un password, no es la contraseña de github, si no es un token que aparece en:
+         - apretas la foto de tu usuario
+         - vas a donde dice Settings
+         - luego precionas donde dice "Developer settings"
+         - apretas donde dice Personal access tokens
+         - y vas a donde dice Personal access tokens
+         - y tocas donde dice "Generate new token"
+                                          - en Nota escribis el nombre de tu computadora
+                                          - Exipiration: 30 days
+                                          - pinchas en el cuadradito de "repo"
+                                          - tocas en "generate token"
+
+
+ una vez finalizado estos pasos copias el token que aparece y lo pegas en la terminal, para luego ir a GitHub, donde se encuentra el repositorio y ver todos los cambios que realizaste desde la terminal.                                        
+                                          
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+Comandos de git:
+
+- ls (permite listar todos los archivos y carpetas que se encuentren dentro de un determinado directorio)
+- ls -a (te mostrará todas las carpetas y archivos que se encuentren ocultos)
+- pwd (para previsualizar en que directorio se encuentran)
+- cd "nombre de carpeta a mover"(tambien podes poner la primeras letras del nombre y luego presionar la tecla TAB para poder rellenar todo el nombre de la carpeta) (para moverte de carpeta dentro de el mismo directorio)
+- cd .. (retrocedes a una carpeta hacia atrás)
+- mkdir "nombre de la carpeta nueva" (para crear una nueva carpeta desde la terminal)
+- rmdir "nombre de la carpeta ha eliminar"
+- code . (para abrir el editor de texto)
+- mv "nomre del archivo" "nombre que queres que se llame el archivo" (para renombrar el archivo) - luego de este comando escribiendo git add "nombre del archivo" "nombre que queres que se llame el archivo" renombras el nombre del archivo
+
+
+------------------------------------------------------------------------------------
