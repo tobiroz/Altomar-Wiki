@@ -1,0 +1,66 @@
+conceptos importantes de Spacy:
+
+En el centro de spacy está el objeto que contiene el pipeline de procesamiento
+Para crear un objeto NLP de español se puede importar la clase de lenguaje de Sapanish -> 'spacy.lang.es'
+Cuando procesas un string de texto con el objeto nlp, SpaCy crea un objeto 'Doc'
+El Doc te permite acceder a la informacion sobre el texto en una forma estructurada y sin perder información.
+             El Doc se comporta como una secuencia norml de Python y te permite iterar (Realizar [cierta acción] varias veces.) sobre sus tokens u obtener un token con su índice
+Los objetos Token representan a los tokens en un docuemento {Por Ejempo: una palabra o un signo de puntuación}
+Para obtener el token en un posición específica se necesita usar el índice del doc.
+Un objeto Span es un slice de un documento compuesto por uno o más tokens.
+                            Es solo un view de un Doc y no contiene los datos en sí.
+Para crear un Span se puede utilizar la notación de 'slice' de Python {Por Ejemplo: 'doc[2:4]' crea un slice que comienzaa en el token en la posición 2 hasta, pero no incluyendo el token en la posición 4}
+
+
+
+
+Atributos:
+.text - Devuelve el texto del token
+i - Es el índice del token dentro del documento padre
+is_alpha, is_punct, like_num - Devuelven valores booleanos que indican si un token está compuesto por caracteres alfabéticos, si es puntuación, o si parece un número. {Por Ejemplo: el token "10" Uno, Cero, o la palabra "diez": D-I-E-Z (Denominados atributos léxicos - Se refieren a una entrada en el vocabulario y no dependen del contexto del token)}
+
+
+Entidades:
+
+1) entidades en documentos
+
+// Itera sobre las entidades predichas //
+for ent in doc.ents:
+    // Imprime en pantalla el texto de la entidad y su etiqueta //
+    print(ent.text, ent.label_)
+
+2) token en documentos
+
+for token in doc:
+    // Obtén el texto del token, el part-of-speech tag y el dependency label //
+    token_text = token.text
+    token_pos = token.pos_
+    token_dep = token.dep_
+     // Esto es solo por formato //
+    print(f"{token_text:<12}{token_pos:<10}{token_dep:<10}")
+
+
+
+
+
+import spacy
+
+# Importa el Matcher
+from spacy.matcher import Matcher
+
+# Carga el modelo y crea un objeto nlp
+nlp = spacy.load("es_core_news_sm")
+
+# Inicializa el matcher con el vocabulario compartido
+matcher = Matcher(nlp.vocab)
+
+# Añade el patrón al matcher
+pattern = [{"TEXT": "adidas"}, {"TEXT": "zx"}]
+matcher.add("ADIDAS_PATTERN", [pattern])
+
+# Procesa un texto
+doc = nlp("Nuevos diseños de zapatillas en la colección adidas zx")
+
+# Llama al matcher sobre el doc
+matches = matcher(doc)
+
